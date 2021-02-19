@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import request from 'superagent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    albums: [],
+  }
+  componentDidMount = async () => {
+    const AlbumList = await request.get('https://dummy-data-lab.herokuapp.com/albums');
+
+    this.setState({
+      albums: AlbumList.body.results,
+    })
+  }
+
+  render() {
+    console.log(this.state.albums)
+    return (
+      <div> {
+        this.state.albums.map((album) =>
+          <div key={album.name}>
+            {album.name}: {album.description}
+          </div>)
+      }
+      </div>
+    )
+  }
 }
 
-export default App;
