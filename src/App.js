@@ -1,30 +1,45 @@
 import React, { Component } from 'react'
-import './App.css';
-import request from 'superagent';
+
+import {
+  BrowserRouter as Router,
+
+  Route,
+  Switch,
+} from 'react-router-dom';
+import Albumpage from './Albumpage.js';
+import Listpage from './Listpage.js';
+
 
 export default class App extends Component {
-  state = {
-    albums: [],
-  }
-  componentDidMount = async () => {
-    const AlbumList = await request.get('https://dummy-data-lab.herokuapp.com/albums');
-
-    this.setState({
-      albums: AlbumList.body.results,
-    })
-  }
-
   render() {
-    console.log(this.state.albums)
     return (
-      <div> {
-        this.state.albums.map((album) =>
-          <div key={album.name}>
-            {album.name}: {album.description}
-          </div>)
-      }
+      <div>
+        <div>
+
+          <Router>
+            <header className='header-style'>
+
+            </header>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={(routerProps) => <Listpage {...routerProps} />}
+              />
+              <Route
+                path="/:albumId"
+                exact
+                render={(routerProps) => <Albumpage {...routerProps} />}
+              />
+
+            </Switch>
+          </Router>
+          <footer>
+
+          </footer>
+        </div>
+
       </div>
     )
   }
 }
-
