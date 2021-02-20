@@ -7,15 +7,15 @@ export default class Listpage extends Component {
         albums: [],
     }
     componentDidMount = async () => {
-        const AlbumList = await request.get('https://dummy-data-lab.herokuapp.com/albums');
+        const AlbumList = await request.get('https://agile-tundra-66322.herokuapp.com/albums');
 
         this.setState({
-            albums: AlbumList.body.results,
+            albums: AlbumList.body,
         })
     }
 
     render() {
-        console.log(this.state.albums[0])
+        console.log(this.state.albums)
         return (
             <div>
                 {

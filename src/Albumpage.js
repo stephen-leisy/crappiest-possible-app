@@ -7,10 +7,10 @@ export default class Albumpage extends Component {
     }
 
     componentDidMount = async () => {
-        const AlbumList = await request.get(`https://dummy-data-lab.herokuapp.com/albums/${this.props.match.params.albumId}`);
+        const AlbumList = await request.get(`https://agile-tundra-66322.herokuapp.com/albums/${this.props.match.params.albumId}`);
         console.log(AlbumList)
         this.setState({
-            albumData: AlbumList.body.results
+            albumData: AlbumList.body
         })
     }
 
