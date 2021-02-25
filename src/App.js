@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './App.css';
 import {
   BrowserRouter as Router,
 
@@ -8,6 +8,8 @@ import {
 } from 'react-router-dom';
 import Albumpage from './Albumpage.js';
 import Listpage from './Listpage.js';
+import Header from './Header.js';
+import Create from './Create.js';
 
 
 export default class App extends Component {
@@ -18,7 +20,7 @@ export default class App extends Component {
 
           <Router>
             <header className='header-style'>
-
+              <Header />
             </header>
             <Switch>
               <Route
@@ -27,9 +29,19 @@ export default class App extends Component {
                 render={(routerProps) => <Listpage {...routerProps} />}
               />
               <Route
-                path="/:albumId"
+                path="/albums"
+                exact
+                render={(routerProps) => <Listpage {...routerProps} />}
+              />
+              <Route
+                path="/albums/:albumId"
                 exact
                 render={(routerProps) => <Albumpage {...routerProps} />}
+              />
+              <Route
+                path="/create"
+                exact
+                render={(routerProps) => <Create {...routerProps} />}
               />
 
             </Switch>

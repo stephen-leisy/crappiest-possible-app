@@ -1,29 +1,36 @@
 import React, { Component } from 'react'
-import request from 'superagent';
+// import request from 'superagent';
 import { Link } from 'react-router-dom';
+import { getAlbums } from './api-utils';
+import Spinner from './Spinner.js';
+
 
 export default class Listpage extends Component {
     state = {
         albums: [],
+        loading: false,
     }
     componentDidMount = async () => {
-        const AlbumList = await request.get('https://agile-tundra-66322.herokuapp.com/albums');
+        this.setState({ loading: true, });
+        const AlbumList = await getAlbums();
 
         this.setState({
-            albums: AlbumList.body,
+            albums: AlbumList,
+            loading: false,
         })
     }
 
     render() {
-        console.log(this.state.albums)
+
         return (
-            <div>
+            <div className="main-list-page">
+                {this.state.loading && <Spinner />}
                 {
                     this.state.albums.map((album) =>
 
-                        <div key={album.name}>
-                            <Link to={`/${album.id}`}>
-                                {album.name}: {album.description}
+                        <div key={album.name} className="album-item">
+                            <Link className="album-link" to={`/albums/${album.id}`}>
+                                {album.name}: {album.instock ? 'In Stock!' : 'Out Of Stock'}
 
                             </Link>
                         </div>)
