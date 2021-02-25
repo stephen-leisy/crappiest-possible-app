@@ -36,3 +36,83 @@
     transform: rotate(360deg);
   }
 }
+.main-list-page {
+  
+  display: flex;
+  flex-wrap: wrap;
+  background-image: url(https://pbs.twimg.com/media/EOafWRKVAAAF_w4.jpg);
+  height: 700px;
+
+}
+.album-item {
+  border: solid 2px black;
+  width: 175px;
+  height: 175px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://www.optimal-media.com/wp-content/uploads/om_press_Detailseite-Leistungen-Schallplatte_OM_7inchcolor-1-400x267.png);
+  border-radius: 15px;
+  
+ 
+}
+* {
+  background-color:palegoldenrod;
+}
+.header {
+  height: 60px;
+  background-color:sandybrown;
+}
+.active {
+  background-color:  rgb(10, 123, 143);
+}
+.nav-links {
+  text-decoration: none;
+  /* background-color: salmon; */
+  margin: 2px;
+  height: 20px;
+  width: 60px;
+  padding: 20px;
+  padding-top: 30px;
+  border-radius: 15px;
+}
+
+.album-link {
+  text-decoration: none;
+  background-color: rgb(10, 123, 143);
+  color: whitesmoke;
+}
+.album-page-style {
+  border: solid 2px black;
+  width: 400px;
+  height: 250px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(10, 123, 143);
+  border-radius: 15px;
+  padding: 5px;
+  
+}
+label {
+  background-color: rgb(10, 123, 143);
+  color: whitesmoke;
+}
+.album-page {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTugINhtS7ySgA6pAt5LOtQeYL35U4x0A8mWQ&usqp=CAU);
+  display: flex;
+  align-items: center;
+}
+.button {
+  padding: 10px;
+  background-color: sandybrown;
+  color: whitesmoke;
+  font-size: 1.2em;
+  border-radius: 15px;
+}
+.button:hover {
+  cursor: pointer;
+}
